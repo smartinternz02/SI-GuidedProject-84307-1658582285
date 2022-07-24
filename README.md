@@ -1,1 +1,1 @@
-# smartinternz-plasmadonorappfinal
+# PlasmaDonorApplication
