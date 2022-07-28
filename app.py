@@ -71,7 +71,7 @@ def loginpage():
         
 @app.route('/stats')
 def stats():
-    sql = "SELECT count(*) FROM user"
+    sql = "SELECT count(*) FROM user WHERE infect ='infected'"
     stmt = ibm_db.prepare(conn, sql)
     ibm_db.execute(stmt)
     count = ibm_db.fetch_assoc(stmt)
