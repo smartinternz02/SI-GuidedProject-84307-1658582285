@@ -77,7 +77,7 @@ def stats():
     count = ibm_db.fetch_assoc(stmt)
     print(count)
     no_of_donors=count['1']
-    sql1 = "SELECT blood,count(blood) FROM user group by blood"
+    sql1 = "SELECT blood,count(blood),infect FROM user group by blood,infect"
     stmt1 = ibm_db.prepare(conn, sql1)
     ibm_db.execute(stmt1)
     count1 = ibm_db.fetch_assoc(stmt1)
@@ -93,19 +93,19 @@ def stats():
          print(count1)
          if count1["BLOOD"] == 'O Positive':
             Opositive_count=count1['2']
-         elif count1["BLOOD"] == "A Positive":
+         elif count1["BLOOD"] == "A Positive" and count1["INFECT"]== 'infected':
             Apositive_count=count1['2']
-         elif count1["BLOOD"] == "B Positive":
+         elif count1["BLOOD"] == "B Positive" and count1["INFECT"]== 'infected':
             Bpositive_count=count1['2']  
-         elif count1["BLOOD"] == "AB Positive":
+         elif count1["BLOOD"] == "AB Positive" and count1["INFECT"]== 'infected':
             ABpositive_count=count1['2']
-         elif count1["BLOOD"] == "O Negative":
+         elif count1["BLOOD"] == "O Negative" and count1["INFECT"]== 'infected':
             Onegative_count=count1['2']
-         elif count1["BLOOD"] == "A Negative":
+         elif count1["BLOOD"] == "A Negative" and count1["INFECT"]== 'infected':
             Anegative_count=count1['2']
-         elif count1["BLOOD"] == "B Negative":
+         elif count1["BLOOD"] == "B Negative" and count1["INFECT"]== 'infected':
             Bnegative_count=count1['2'] 
-         elif count1["BLOOD"] == "AB Negative":
+         elif count1["BLOOD"] == "AB Negative" and count1["INFECT"]== 'infected':
             ABnegative_count=count1['2']                 
          count1 = ibm_db.fetch_assoc(stmt1)
     
