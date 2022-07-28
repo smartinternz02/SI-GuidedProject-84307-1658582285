@@ -71,7 +71,7 @@ def loginpage():
         
 @app.route('/stats')
 def stats():
-    sql = "SELECT count(*) FROM user WHERE infect ='infected'"
+    sql = "SELECT count(*) FROM user WHERE infect ='infected' "
     stmt = ibm_db.prepare(conn, sql)
     ibm_db.execute(stmt)
     count = ibm_db.fetch_assoc(stmt)
@@ -91,7 +91,7 @@ def stats():
     ABnegative_count=0
     while count1 != False:
          print(count1)
-         if count1["BLOOD"] == 'O Positive':
+         if count1["BLOOD"] == 'O Positive' and count1["INFECT"]== 'infected':
             Opositive_count=count1['2']
          elif count1["BLOOD"] == "A Positive" and count1["INFECT"]== 'infected':
             Apositive_count=count1['2']
