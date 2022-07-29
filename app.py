@@ -120,7 +120,7 @@ def requested():
     bloodgrp = request.form['bloodgrp']
     address = request.form['address']
     print(address)
-    sql = "SELECT * FROM user WHERE blood=? and infect ='infected"
+    sql = "SELECT * FROM user WHERE blood=? and infect ='infected'"
     stmt = ibm_db.prepare(conn, sql)
     ibm_db.bind_param(stmt,1,bloodgrp)
     ibm_db.execute(stmt)
